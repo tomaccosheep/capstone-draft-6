@@ -1,0 +1,200 @@
+/*-------------------overlay CSS-----------------*/
+
+
+/* This part configures the overcard div that has
+zero size until html and css are changed by the click
+action of the study buttons. The z-index is two
+because it goes over the rest of the site.*/
+/* {{ */
+
+.imgscale {
+    width: 100%;
+    height: auto;
+}
+
+.nodisp {
+    display: none;
+}
+
+/* }} */
+
+
+/* This modifies a div that doesn't exist until it's injected
+into the html via the JS. That activates when you push a flashcard button.
+/* {{ */
+#overcard-container {
+    position: absolute;
+    z-index: 2;
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+    border: double;
+}
+#overwhite {
+    width: 100%;
+    height: 100%;
+    position: absolute; 
+}
+#overcard {
+    justify-content: center;
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    
+}
+
+/* }} */
+
+.qna {
+    width: 100%;
+    height: 50%;
+    z-index: 4;
+    flex-direction: column;
+    align-items: center; 
+}
+
+#overcard-question {
+    border-bottom-style: double;
+}
+
+
+/* These determine the style of the text
+injected into the html elements in the
+flashcards*/
+/* {{ */
+#question {
+    border-bottom-style: double;
+    text-align: center;
+    width: 90%;
+    margin: 0% 5% 0% 5%;
+}
+
+#answer {
+    text-align: center;
+}
+/* }} */
+
+
+/*---------------------------4 main click buttons---------------*/
+
+/* This configures rows that arrange the four main buttons */
+/* {{ */
+.rowdiv {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    width: 100%;
+}
+/* }} */
+
+.rowElement {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* This applies to the numbers above and below the
+main four buttons */
+/* {{ */
+.statElement {
+    width: 15%;
+    padding: 0% 7% 0% 7%;
+    text-align: center;
+}
+/* }} */
+
+#statElementDiv {
+    height: 40px;
+}
+
+#points {
+    display: flex;
+    justify-content: center;
+}
+
+#stat1 {
+    width: 50%;
+    text-align: right;
+}
+
+#stat2 {
+    width: 50%;
+    text-align: left;
+    /*margin: 0% 5% 0% 5%;*/
+}
+
+/*--------------Buttons to bring flashcards--------------------*/
+
+.carddiv {
+    display: flex;
+    flex-flow: row;
+}
+
+.card_button {
+    margin: 5px;
+    padding: 5px;
+    border-style: double;
+    border-width: 3px;
+}
+
+/*------------------------Misc------------------*/
+#collecting {
+    /*margin-top: 50px;*/
+}
+
+/* This is used to make text
+and pictures unselectable */
+/* {{ */
+.nosel {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+/* }} */
+
+#save {
+    width: 25%;
+    text-align: center;
+}
+
+#colcontainer {
+    display: flex;
+}
+
+.maincol {
+    display: flex;
+    flex-direction: column;
+    border: double;
+    width: 40%;
+}
+
+#statdiv {
+    width: 20%;
+}
+
+.object {
+    text-align: center;
+}
+
+.stat {
+    display: flex;
+    align-content: flex-start;
+    justify-content: flex-start;
+}
+
+#stat1 {
+    text-align: right;
+    flex-shrink: 5;
+}
+
+#stat2 {
+    text-align: left;
+    flex-grow: 5;
+}

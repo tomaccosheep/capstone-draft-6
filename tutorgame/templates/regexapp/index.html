@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <link rel='stylesheet' href='{% static "css/style.css" %}'>
+</head>
+<body>
+{{ viewmessage }}
+{{ unique_id }}
+<!-- This is where all the html and css is
+injected to create a flashcard over the game -->
+<div id='overcard-container' class='nodisp flashcard'>
+    <img id='overwhite' class='nodisp flashcard' src="{% static 'img/white.png' %}"/>
+    <div id='overcard' class='nodisp flashcard'>
+        <div id='overcard-question' class='qna nodisp flashcard'>Question Here
+        </div>
+        <div id='overcard-answer' class='qna nodisp flashcard'>
+        <form action='http://www.example.com/comments.php'><div id='overcard-answer' class='qna nodisp flashcard'>
+            <input type='textarea' name='answer_guess' class='nodisp flashcard' cols='20' rows='4'>
+            </input>
+        </form>
+        <button type='button' value='cardFinished' class='cardFinished'>Finished</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<h1>High School CS Tutor</h1>
+<div id='colcontainer'>
+    <div id='statdiv' class='maincol'>
+        <div id='wellstat' class='stat'>
+            <div class='stat1'>Well-being:&nbsp;</div>
+            <div id='wellnum' class='stat2'>0</div>
+        </div>
+        <hr />
+        <div id='moneystat' class='stat'>
+            <div class='stat1'>Money:&nbsp;</div>
+            <div id='moneynum' class='stat2'>0</div>
+        </div>
+        <hr />
+        <div id='popstat' class='stat'>
+            <div class='stat1'>Popularity:&nbsp;</div>
+            <div id='popnum' class='stat2'>0</div>
+        </div>
+        <hr />
+    </div>
+    
+    
+    <div id='buydiv' class='maincol'>
+        <div id='clickobj' class='object card_button nosel'>
+            Babysit (Gain $)
+        </div>
+        <div id='vegobj' class='object card_button nosel'>
+            Buy Vegetable (0)
+        </div>
+        <div id='pizzaobj' class='object card_button nosel'>
+            Buy Pizza (0)
+        </div>
+        <div id='pizzarobj' class='object card_button nosel'>
+            Buy Pizza Restaurant (0)
+        </div>
+        <div id='shoeobj' class='object card_button nosel'>
+            Buy Cool Shoes (0)
+        </div>
+        <div id='dateobj' class='object card_button nosel'>
+            Get Dating Partner (0)
+        </div>
+    </div>
+
+    <div id='infodiv' class='maincol'>
+
+    </div>
+</div>
+
+<hr />
+<div id='collecting'>CS Tutor Demand: 0</div>
+<div class='carddiv'>
+<div id='study20' class='card_button nosel'>Study for 20% of demand as $</div>
+<div id='test80' class='card_button nosel'>Test for 80% of demand as $</div>
+</div>
+<hr />
+<div id='save' class='card_button nosel'>Save game</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{% static 'js/site.js' %}"></script>
+{% if money %}
+    <script type='text/javascript'>
+        money = {{money}};
+        $("#moneynum").html((Math.round(money * 100)/100));
+        $("#vegobj").html("Buy Vegetable (" + Math.round(veg - 1) + ")");
+        $("#wellnum").html((Math.round(well_being * 100)/100));
+        $("#pizzaobj").html("Buy Pizza (" + Math.round(pizza - 1) + ")");
+        $("#pizzarobj").html("Buy Pizza Restaurant (" + Math.round(pizzar) + ")");
+        $("#shoeobj").html("Buy Cool Shoes (" + Math.round(shoe) + ")");
+        $("#dateobj").html("Get Dating Partner (" + Math.round(partner) + ")");
+        $("#popnum").html(popularity);
+    </script>
+{% endif %}
+
+</body>
+</html>
+
+
+
+
