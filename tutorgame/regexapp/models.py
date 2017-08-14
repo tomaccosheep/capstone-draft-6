@@ -31,6 +31,10 @@ class Game_Num(models.Model):
     partner_cost_money = models.BigIntegerField(null=True)
     partner_cost_pop = models.BigIntegerField(null=True)
     cs_demand = models.BigIntegerField(null=True)
+    repeat_me = models.CharField(max_length=256, null=True)
+    select_me = models.CharField(max_length=256, null=True)
+    full_string = models.CharField(max_length=512, null=True)
+    
     
     def __str__(self):
         return self.unique_id

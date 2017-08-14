@@ -57,6 +57,7 @@ into the html via the JS. That activates when you push a flashcard button.
 
 #overcard-question {
     border-bottom-style: double;
+    white-space: pre-wrap;
 }
 
 
@@ -201,4 +202,12 @@ and pictures unselectable */
 
 span.yellow {
     background-color: yellow;
+}
+
+.studycard {
+    display: none;
+}
+
+.testcard {
+    display: none;
 }

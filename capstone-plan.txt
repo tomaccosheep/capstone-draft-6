@@ -1,3 +1,10 @@
 .Make sure all data is transmitted
 .connect views to functions generating regex and managing regex questions
 .change js to accept questions and return answers for feedback
+
+
+
+var input = document.getElementById("input_id").value
+make object in js
+send it through json
+make sure terms are used in views

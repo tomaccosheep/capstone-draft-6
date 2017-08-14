@@ -275,7 +275,10 @@ $("#pic_speed").click(function() {
 */
 $("#study20").click(function() {
     $(".flashcard").css('display', 'flex');
-    $.ajax({url: "/ajax/question_hw/",
+    $(".studycard").css('display', 'flex');
+	var my_url = window.location.href;
+	my_key = (my_url.split("index")[1]).split('/')[1]
+    $.ajax({url: "/ajax/question_hw/" + my_key + '/',
             type: "GET",
             success: function(result){
                 $("#overcard-question").html("Repeat this: <br />" + result.homework);
@@ -284,7 +287,10 @@ $("#study20").click(function() {
 
 $("#test80").click(function() {
     $(".flashcard").css('display', 'flex');
-    $.ajax({url: "/ajax/question_test/",
+    $(".testcard").css('display', 'flex');
+	var my_url = window.location.href;
+	my_key = (my_url.split("index")[1]).split('/')[1]
+    $.ajax({url: "/ajax/question_test/" + my_key + '/',
             type: "GET",
             success: function(result){
                 var hw_string = "<p>";
@@ -304,17 +310,56 @@ $("#test80").click(function() {
 
 
 
-$(".cardFinished").click(function() {
+$(".studycard").click(function() {
     $(".flashcard").css('display', 'none');
+    $(".studycard").css('display', 'none');
     $("#overcard-question").html(' ');
-    $.ajax({url: "/ajax/check_homework/", success: function(result){
-        if (result.repeated === true) {
-            console.log('add machines');
+	var my_url = window.location.href;
+	my_key = (my_url.split("index")[1]).split('/')[1]
+    var myObject = new Object();
+    myObject.repeat_me = document.getElementById("answer_guess").value;
+    var myString = JSON.stringify(myObject);
+    $.ajax({url: "/ajax/check_homework/" + my_key + '/',
+            type: "POST",
+            dataType: 'json',
+            data: myString,
+            success: function(result){
+        if (result.correct === true) {
+            money_change = Math.round(cs_demand * .2);
+            console.log(money_change);
+            cs_demand -= money_change;
+            money += money_change;
+            $("#moneynum").html((Math.round(money * 100)/100));
+            $("#collecting").html("CS Tutor Demand: " + Math.round(cs_demand));
         }
     }});
 }); 
 
 
+$(".testcard").click(function() {
+    $(".flashcard").css('display', 'none');
+    $(".testcard").css('display', 'none');
+    $("#overcard-question").html(' ');
+	var my_url = window.location.href;
+	my_key = (my_url.split("index")[1]).split('/')[1]
+    var myObject = new Object();
+    myObject.answer_guess = document.getElementById("answer_guess").value;
+    var myString = JSON.stringify(myObject);
+    $.ajax({url: "/ajax/check_test/" + my_key + '/',
+            type: "POST",
+            dataType: 'json',
+            data: myString,
+            success: function(result){
+        if (result.correct === true) {
+            money_change = Math.round(cs_demand * .8);
+            console.log(money_change);
+            cs_demand -= money_change;
+            money += money_change;
+            $("#moneynum").html((Math.round(money * 100)/100));
+            $("#collecting").html("CS Tutor Demand: " + Math.round(cs_demand));
+        }
+    }});
+}); 
 
 $("#save").click(function() {
 
