@@ -90,23 +90,21 @@ class Regexer:
         return nonselect_string_list
 
     def regex_question(self):
-        regex_list, selectme_string_list = self.regex_gen()
-        nonselect_string_list = self.regex_nonselect_gen(selectme_string_list)
-        full_string = ''
-        for i in range(0, len(selectme_string_list)):
-            full_string += nonselect_string_list[i]
-            full_string += selectme_string_list[i]
-        full_string += nonselect_string_list[-1]
-        regex_string = ''
-        for i in regex_list:
-            regex_string += i
-        regexed = re.findall(regex_string, full_string)
-        print("Full string: " + full_string)
-        print("Find these ones: \n" + str(selectme_string_list))
-        print("List answer: " + str(regex_list))
-        print("String answer: " + regex_string)
-        print("All answers: " + str(regexed))
-        return [full_string, selectme_string_list, regex_list, regex_string, regexed]
+        regexed = 1
+        selectme_string_list = 0
+        while regexed != selectme_string_list:
+            regex_list, selectme_string_list = self.regex_gen()
+            nonselect_string_list = self.regex_nonselect_gen(selectme_string_list)
+            full_string = ''
+            for i in range(0, len(selectme_string_list)):
+                full_string += nonselect_string_list[i]
+                full_string += selectme_string_list[i]
+            full_string += nonselect_string_list[-1]
+            regex_string = ''
+            for i in regex_list:
+                regex_string += i
+            regexed = re.findall(regex_string, full_string)
+        return [nonselect_string_list, selectme_string_list, regex_string, full_string]
 
 
 

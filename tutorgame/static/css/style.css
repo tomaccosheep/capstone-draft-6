@@ -198,3 +198,7 @@ and pictures unselectable */
     text-align: left;
     flex-grow: 5;
 }
+
+span.yellow {
+    background-color: yellow;
+}

@@ -84,7 +84,21 @@ injected to create a flashcard over the game -->
 <script src="{% static 'js/site.js' %}"></script>
 {% if money %}
     <script type='text/javascript'>
+        well_being = {{well_being}};
         money = {{money}};
+        popularity = {{popularity}};
+        veg = {{veg}};
+        pizza = {{pizza}};
+        pizzar = {{pizzar}};
+        shoe = {{shoe}};
+        partner = {{partner}};
+        veg_cost_money = {{veg_cost_money}};
+        pizza_cost_money = {{pizza_cost_money}};
+        pizzar_cost_money = {{pizzar_cost_money}};
+        shoes_cost_money = {{shoes_cost_money}};
+        partner_cost_money = {{partner_cost_money}};
+        partner_cost_pop = {{partner_cost_pop}};
+        cs_demand = {{cs_demand}};
         $("#moneynum").html((Math.round(money * 100)/100));
         $("#vegobj").html("Buy Vegetable (" + Math.round(veg - 1) + ")");
         $("#wellnum").html((Math.round(well_being * 100)/100));

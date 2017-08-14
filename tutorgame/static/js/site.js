@@ -275,15 +275,31 @@ $("#pic_speed").click(function() {
 */
 $("#study20").click(function() {
     $(".flashcard").css('display', 'flex');
-	var my_url = window.location.href;
-	my_key = (my_url.split("index")[1]).split('/')[1]
-    $.ajax({url: "/ajax/question_hw/" + my_key + '/', success: function(result){
-            $("#overcard-question").html(result.repeat_me);
+    $.ajax({url: "/ajax/question_hw/",
+            type: "GET",
+            success: function(result){
+                $("#overcard-question").html("Repeat this: <br />" + result.homework);
         }})
 }); 
 
 $("#test80").click(function() {
     $(".flashcard").css('display', 'flex');
+    $.ajax({url: "/ajax/question_test/",
+            type: "GET",
+            success: function(result){
+                var hw_string = "<p>";
+                for (i=0; i < result.selectme.length; i++) {
+                    hw_string += result.nonselect[i];
+                    hw_string += "<span class='yellow'>";
+                    hw_string += result.selectme[i];
+                    hw_string += "</span>";
+                }
+                hw_string += result.nonselect[result.nonselect.length - 1];
+                hw_string += "</p>";
+                $("#overcard-question").html(hw_string);
+                console.log(hw_string);
+                console.log(result.selectme);
+        }})
 }); 
 
 

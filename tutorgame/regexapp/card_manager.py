@@ -1,10 +1,7 @@
-import regex_maker
-import card_nodes
+from regexapp import card_nodes
 import random
 
 class Card_Manager:
-    my_regexer = regex_maker.Regexer()
-
     #Build node list
     # {{
     active_node = None
@@ -31,8 +28,3 @@ class Card_Manager:
     def check_homework(self, instring):
         return (instring == self.active_node.repeat_me)
 
-    def get_test_question(self):
-        return self.my_regexer.regex_question()
-
-
-    
